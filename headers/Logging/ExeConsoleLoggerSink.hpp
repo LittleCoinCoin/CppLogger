@@ -11,30 +11,41 @@ namespace Logging
 	{
 	public:
 
-		ExeConsoleLoggerSink() = default;
+		/*!
+		@brief Default constructor that initializes the logging functions for
+				each log level.
+		*/
+		ExeConsoleLoggerSink() : LoggerSink()
+		{
+			loggingFunctions[LogLevel_Trace] = std::bind(&ExeConsoleLoggerSink::LogTrace, this, std::placeholders::_1);
+			loggingFunctions[LogLevel_Debug] = std::bind(&ExeConsoleLoggerSink::LogDebug, this, std::placeholders::_1);
+			loggingFunctions[LogLevel_Error] = std::bind(&ExeConsoleLoggerSink::LogError, this, std::placeholders::_1);
+			loggingFunctions[LogLevel_Warning] = std::bind(&ExeConsoleLoggerSink::LogWarning, this, std::placeholders::_1);
+		}
 
+	private:
 		/*!
 		@brief Forwards a message (@p _msg) to indicate it is of type @a Trace
 				and prints it in the console.
 		*/
-		void LogTrace(const char* _msg) const noexcept override;
+		void LogTrace(const char* _msg) const noexcept;
 
 		/*!
 		@brief Forwards a message (@p _msg) to indicate it is of type @a Debug
 				and prints it in the console.
 		*/
-		void LogDebug(const char* _msg) const noexcept override;
+		void LogDebug(const char* _msg) const noexcept;
 
 		/*!
 		@brief Forwards a message (@p _msg) to indicate it is of type @a Error
 				and prints it in the console.
 		*/
-		void LogError(const char* _msg) const noexcept override;
+		void LogError(const char* _msg) const noexcept;
 
 		/*!
 		@brief Forwards a message (@p _msg) to indicate it is of type @a Warning
 				and prints it in the console.
 		*/
-		void LogWarning(const char* _msg) const noexcept override;
+		void LogWarning(const char* _msg) const noexcept;
 	};
 }

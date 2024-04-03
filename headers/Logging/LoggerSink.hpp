@@ -1,37 +1,34 @@
 #pragma once
 #include <string>
+#include <functional>
+
+#include "LogLevels.hpp"
 
 namespace Logging
 {
 	/*
 	@brief LoggerSink is an interface for all sinks that can be added to the static logger.
-	@details Derive from this class to create your new logging sink. Then, add the instance
-			 of your new sink to the list of sinks in the Logger class. Finally, calling the
-			 static methods of the same name (LogXXX) in the Logger class will defer loggin
-			 to your new added sink.
+	@details Derive from this class to create your new logging sink. Implement the Log functions
+			 for each log level you want to support in the derived class and add them to the
+			 loggingFunctions array.
+			 Finally, add the instance of your new sink to the list of sinks in the Logger class.
 	@see Logging::Logger
 	*/
 	class LoggerSink
 	{
+	protected:
+		std::function<void(const char*)> loggingFunctions[LogLevel_Count];
+
 	public:
-		/*!
-		@brief API to log a DEBUG message.
-		*/
-		virtual void LogDebug(const char* _msg) const noexcept = 0;
 
-		/*!
-		@brief API to log an ERROR message.
-		*/
-		virtual void LogError(const char* _msg) const noexcept = 0;
+		LoggerSink() = default;
 
-		/*!
-		@brief API to log a TRACE message.
-		*/
-		virtual void LogTrace(const char* _msg) const noexcept = 0;
-
-		/*!
-		@brief API to log a WARNING message.
-		*/
-		virtual void LogWarning(const char* _msg) const noexcept = 0;
+		void Log(LogLevel _lvl, const char* _msg)
+		{
+			if (loggingFunctions[_lvl])
+			{
+				loggingFunctions[_lvl](_msg);
+			}
+		}
 	};
 }
