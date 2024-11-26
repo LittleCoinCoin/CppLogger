@@ -27,5 +27,5 @@ endif()
 #In this project, by default we want to build the tests
 option(BUILD_LOGGING_TESTS "Build the test executable for the logger" ON)
 if (BUILD_LOGGING_TESTS)
-	add_subdirectory ("src/Tests")
+	add_subdirectory ("src/Tests/DirectBuild")
 endif()
