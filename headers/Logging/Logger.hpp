@@ -9,10 +9,10 @@
 namespace Logging
 {
 
-#define LOG_DEBUG(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Debug, fmt, ##__VA_ARGS__)
-#define LOG_TRACE(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Trace, fmt, ##__VA_ARGS__)
-#define LOG_WARNING(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Warning, fmt, ##__VA_ARGS__)
-#define LOG_ERROR(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Error, fmt, ##__VA_ARGS__)
+#define LOG_DEBUG(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Debug, __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
+#define LOG_TRACE(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Trace, __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
+#define LOG_WARNING(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Warning, __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
+#define LOG_ERROR(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Error, __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
 
 	/*!
 	@brief Static struct to handle logging to different sinks.
@@ -44,10 +44,12 @@ namespace Logging
 		/*!
 		@brief Assembles and sends a message to all sinks with the level @p _logLvl.
 		@details You probably want to use the LOG_* macros instead of this function.
+		@param _logLvl The level of the message.
 		@param _fmt The message to log containing formating anchors.
 		@param ... The arguments to replace the formating anchors with.
 		*/
-		static void Log(LogLevel _logLvl, const char* _fmt, ...) noexcept;
+		static void Log(LogLevel _logLvl, const char* _file, const char* _function,
+			const char* _fmt, ...) noexcept;
 
 		/*!
 		@brief Removes the sink at index @p _idx from ::loggerSinks.
