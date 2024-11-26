@@ -15,7 +15,7 @@ namespace Logging
 		@brief Default constructor that initializes the logging functions for
 				each log level.
 		*/
-		ExeConsoleLoggerSink() : LoggerSink()
+		LOGGING_API ExeConsoleLoggerSink() : LoggerSink()
 		{
 			loggingFunctions[LogLevel_Trace] = std::bind(&ExeConsoleLoggerSink::LogTrace, this, std::placeholders::_1);
 			loggingFunctions[LogLevel_Debug] = std::bind(&ExeConsoleLoggerSink::LogDebug, this, std::placeholders::_1);

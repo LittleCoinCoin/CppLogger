@@ -3,6 +3,7 @@
 #include <functional>
 
 #include "LogLevels.hpp"
+#include "Export.hpp"
 
 namespace Logging
 {
@@ -21,9 +22,9 @@ namespace Logging
 
 	public:
 
-		LoggerSink() = default;
+		LOGGING_API LoggerSink() = default;
 
-		void Log(LogLevel _lvl, const char* _msg)
+		LOGGING_API void Log(LogLevel _lvl, const char* _msg)
 		{
 			if (loggingFunctions[_lvl])
 			{
