@@ -18,8 +18,14 @@ endif()
 # For consistency we separate the potential .lib generated
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib" CACHE STRING "")
 
+# Building the library for the logger
+option(BUILD_LOGGING_LIBRARY "Build the library for the logger" ON)
+if (BUILD_LOGGING_LIBRARY)
+	add_subdirectory ("src/Logging")
+endif()
+
 #In this project, by default we want to build the tests
-option(BUILD_LOGGER_TESTS "Build the test executable for the logger" ON)
-if (BUILD_LOGGER_TESTS)
+option(BUILD_LOGGING_TESTS "Build the test executable for the logger" ON)
+if (BUILD_LOGGING_TESTS)
 	add_subdirectory ("src/Tests")
 endif()
