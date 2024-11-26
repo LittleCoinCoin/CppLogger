@@ -12,6 +12,7 @@ add_library(${TargetName} SHARED
 )
 
 target_compile_features(${TargetName} PUBLIC cxx_std_20)
+target_compile_definitions(${TargetName} PRIVATE BUILD_LOGGING_LIB)
 
 target_include_directories(${TargetName} PUBLIC
 
