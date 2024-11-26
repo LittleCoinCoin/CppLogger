@@ -17,7 +17,7 @@ namespace Logging
 	/*!
 	@brief Static struct to handle logging to different sinks.
 	*/
-	struct Logger
+	struct LOGGING_API Logger
 	{
 		/*!
 		@brief Maximum size of a message that can be logged at a time.
@@ -43,6 +43,7 @@ namespace Logging
 
 		/*!
 		@brief Assembles and sends a message to all sinks with the level @p _logLvl.
+		@details You probably want to use the LOG_* macros instead of this function.
 		@param _fmt The message to log containing formating anchors.
 		@param ... The arguments to replace the formating anchors with.
 		*/
