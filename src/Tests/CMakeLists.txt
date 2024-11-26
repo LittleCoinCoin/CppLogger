@@ -2,7 +2,8 @@
 
 add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 
-add_executable (Logger
+set(TargetName LoggerTest)
+add_executable (${TargetName}
 
 "main.cpp"
 
@@ -11,6 +12,6 @@ add_executable (Logger
 
 )
 
-set_property(TARGET Logger PROPERTY CXX_STANDARD 20)
+target_compile_features(${TargetName} PUBLIC cxx_std_20)
 
-target_include_directories(Logger PRIVATE "../../headers")
+target_include_directories(${TargetName} PRIVATE "../../headers")
