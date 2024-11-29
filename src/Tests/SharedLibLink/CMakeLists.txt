@@ -42,5 +42,4 @@ target_compile_definitions(${TargetTestName} PRIVATE USE_LOGGING_LIB)
 # Add build dependencies
 add_dependencies(${TargetTestName} ${TargetLibName})
 
-message("Expecting to find shared logging lib at:" ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/${TargetLibName})
 target_link_libraries(${TargetTestName} PRIVATE ${TargetLibName})
