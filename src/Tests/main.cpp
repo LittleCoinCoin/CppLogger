@@ -1,11 +1,11 @@
 ﻿
 #include "Logging/Logger.hpp"
-#include "Logging/ExeConsoleLoggerSink.hpp"
+#include "Tests/TestLoggerSink.hpp"
 
 int main()
 {
-	Logging::ExeConsoleLoggerSink logSink;
-	Logging::Logger::AddSink(new Logging::ExeConsoleLoggerSink());
+	Logging::TestLoggerSink logSink;
+	Logging::Logger::AddSink(new Logging::TestLoggerSink());
 
 	LOG_TRACE("This is a trace message.");
 	LOG_TRACE("This is a trace message with an int: %u", 42);
