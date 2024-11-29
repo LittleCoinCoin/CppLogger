@@ -10,10 +10,10 @@
 namespace Logging
 {
 
-#define LOG_DEBUG(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Debug, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
-#define LOG_TRACE(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Trace, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
-#define LOG_WARNING(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Warning, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
-#define LOG_ERROR(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Error, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, fmt, ##__VA_ARGS__)
+#define LOG_DEBUG(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Debug, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_TRACE(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Trace, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_WARNING(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Warning, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_ERROR(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Error, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
 
 	/*!
 	@brief Static struct to handle logging to different sinks.
@@ -59,7 +59,7 @@ namespace Logging
 		@param ... The arguments to replace the formating anchors with.
 		*/
 		static void Log(LogLevel _logLvl, const char* _time, const char* _file,
-			const char* _function, const char* _fmt, ...) noexcept;
+			const char* _function, const int _line, const char* _fmt, ...) noexcept;
 
 		/*!
 		@brief Removes the sink at index @p _idx from ::loggerSinks.

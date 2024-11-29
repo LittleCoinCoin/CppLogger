@@ -20,7 +20,7 @@ std::size_t Logging::Logger::AddSink(LoggerSink* _loggerSink)
 }
 
 void Logging::Logger::Log(LogLevel _logLvl, const char* _time, const char* _file,
-	const char* _function, const char* _fmt, ...) noexcept
+	const char* _function, const int _line, const char* _fmt, ...) noexcept
 {
 	va_list args;
 	va_start(args, _fmt);
@@ -29,7 +29,7 @@ void Logging::Logger::Log(LogLevel _logLvl, const char* _time, const char* _file
 
 	for (std::vector<LoggerSink*>::iterator it = loggerSinks.begin(); it != loggerSinks.end(); it++)
 	{
-		(*it)->Log(_logLvl, msgBuffer, _time, _file, _function);
+		(*it)->Log(_logLvl, msgBuffer, _time, _file, _function, _line);
 	}
 
 	va_end(args);

@@ -17,7 +17,8 @@ namespace Logging
 	{
 	protected:
 		typedef void (LoggerSink::* logFunc_pf)(const char* /*_msg*/,
-			const char* /*_time*/, const char* /*_file*/, const char* /*_function*/) const noexcept;
+			const char* /*_time*/, const char* /*_file*/, const char* /*_function*/,
+			int /*_line*/ ) const noexcept;
 		logFunc_pf loggingFunctions[LogLevel_Count];
 
 	public:
@@ -25,11 +26,11 @@ namespace Logging
 		LOGGING_API LoggerSink() = default;
 
 		LOGGING_API void Log(LogLevel _lvl, const char* _msg,
-			const char* _time, const char* _file, const char* _function) noexcept
+			const char* _time, const char* _file, const char* _function, const int _line) noexcept
 		{
 			if (loggingFunctions[_lvl])
 			{
-				(this->*loggingFunctions[_lvl])(_msg, _time, _file, _function);
+				(this->*loggingFunctions[_lvl])(_msg, _time, _file, _function, _line);
 			}
 		}
 	};
