@@ -4,10 +4,10 @@
 namespace Logging
 {
 	/*!
-	@brief The Logger sink to receive log messages and print them in the
-			executables console.
+	@brief The Logger sink that will be used to demonstrate and test all the public
+			API of the logging code that a user should implement and use.
 	*/
-	class ExeConsoleLoggerSink : public LoggerSink
+	class TestLoggerSink : public LoggerSink
 	{
 	public:
 
@@ -15,17 +15,22 @@ namespace Logging
 		@brief Default constructor that initializes the logging functions for
 				each log level.
 		*/
-		LOGGING_API ExeConsoleLoggerSink() : LoggerSink()
+		LOGGING_API TestLoggerSink() : LoggerSink()
 		{
-			loggingFunctions[LogLevel_Trace] = static_cast<LoggerSink::logFunc_pf>(&ExeConsoleLoggerSink::LogTrace);
-			loggingFunctions[LogLevel_Debug] = static_cast<LoggerSink::logFunc_pf>(&ExeConsoleLoggerSink::LogDebug);
-			loggingFunctions[LogLevel_Error] = static_cast<LoggerSink::logFunc_pf>(&ExeConsoleLoggerSink::LogError);
-			loggingFunctions[LogLevel_Warning] = static_cast<LoggerSink::logFunc_pf>(&ExeConsoleLoggerSink::LogWarning);
-		
-			prefixFunctions[LogLevel_Trace] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::PrefixTrace);
-			prefixFunctions[LogLevel_Debug] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::PrefixDebug);
-			prefixFunctions[LogLevel_Error] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::PrefixError);
-			prefixFunctions[LogLevel_Warning] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::PrefixWarning);
+			loggingFunctions[LogLevel_Trace] = static_cast<LoggerSink::logFunc_pf>(&TestLoggerSink::LogTrace);
+			loggingFunctions[LogLevel_Debug] = static_cast<LoggerSink::logFunc_pf>(&TestLoggerSink::LogDebug);
+			loggingFunctions[LogLevel_Error] = static_cast<LoggerSink::logFunc_pf>(&TestLoggerSink::LogError);
+			loggingFunctions[LogLevel_Warning] = static_cast<LoggerSink::logFunc_pf>(&TestLoggerSink::LogWarning);
+
+			prefixFunctions[LogLevel_Trace] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::PrefixTrace);
+			prefixFunctions[LogLevel_Debug] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::PrefixDebug);
+			prefixFunctions[LogLevel_Error] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::PrefixError);
+			prefixFunctions[LogLevel_Warning] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::PrefixWarning);
+
+			suffixFunctions[LogLevel_Trace] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::SuffixTrace);
+			suffixFunctions[LogLevel_Debug] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::SuffixDebug);
+			suffixFunctions[LogLevel_Error] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::SuffixError);
+			suffixFunctions[LogLevel_Warning] = static_cast<LoggerSink::afix_pf>(&TestLoggerSink::SuffixWarning);
 		}
 
 	private:
@@ -131,6 +136,54 @@ namespace Logging
 		@param _line The line (in the file) the message was logged from.
 		*/
 		void PrefixWarning(const char* _time, const char* _file,
+			const char* _function, const int _line) const noexcept;
+
+		/*!
+		@brief Prints the suffix for a message of type @a Trace in the console.
+		@details This function is meant to be registered in the ::prefixFunctions
+				 array for the @a LogLevel_Trace.
+		@param _time The time the message was logged.
+		@param _file The file the message was logged from.
+		@param _function The function the message was logged from.
+		@param _line The line (in the file) the message was logged from.
+		*/
+		void SuffixTrace(const char* _time, const char* _file,
+			const char* _function, const int _line) const noexcept;
+
+		/*!
+		@brief Prints the suffix for a message of type @a Debug in the console.
+		@details This function is meant to be registered in the ::prefixFunctions
+				 array for the @a LogLevel_Debug.
+		@param _time The time the message was logged.
+		@param _file The file the message was logged from.
+		@param _function The function the message was logged from.
+		@param _line The line (in the file) the message was logged from.
+		*/
+		void SuffixDebug(const char* _time, const char* _file,
+			const char* _function, const int _line) const noexcept;
+
+		/*!
+		@brief Prints the suffix for a message of type @a Error in the console.
+		@details This function is meant to be registered in the ::prefixFunctions
+				 array for the @a LogLevel_Error.
+		@param _time The time the message was logged.
+		@param _file The file the message was logged from.
+		@param _function The function the message was logged from.
+		@param _line The line (in the file) the message was logged from.
+		*/
+		void SuffixError(const char* _time, const char* _file,
+			const char* _function, const int _line) const noexcept;
+
+		/*!
+		@brief Prints the suffix for a message of type @a Warning in the console.
+		@details This function is meant to be registered in the ::prefixFunctions
+				 array for the @a LogLevel_Warning.
+		@param _time The time the message was logged.
+		@param _file The file the message was logged from.
+		@param _function The function the message was logged from.
+		@param _line The line (in the file) the message was logged from.
+		*/
+		void SuffixWarning(const char* _time, const char* _file,
 			const char* _function, const int _line) const noexcept;
 	};
 }

@@ -37,7 +37,7 @@ void Logging::Logger::Log(LogLevel _logLvl, const char* _time, const char* _file
 	va_end(args);
 }
 
-void Logging::Logger::RemoveSink(std::size_t& _idx)
+void Logging::Logger::RemoveSink(std::size_t _idx)
 {
 	LOG_DEBUG("Removing Sink at index: %llu", _idx);
 	loggerSinks.erase(loggerSinks.begin() + _idx);

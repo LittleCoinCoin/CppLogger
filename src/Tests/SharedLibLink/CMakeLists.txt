@@ -6,10 +6,11 @@ add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 set(TargetLibName LoggingLibTest)
 add_library(${TargetLibName} SHARED
 
-"../../Logging/ExeConsoleLoggerSink.cpp"
+"../../Logging/ExeConsoleLoggerSink.cpp" #Included to test the build but not used in the test
 "../../Logging/Logger.cpp"
 "../../Logging/LoggerSink.cpp"
 
+"../src/TestLoggerSink.cpp"
 )
 
 target_compile_features(${TargetLibName} PUBLIC cxx_std_20)
@@ -25,7 +26,7 @@ target_include_directories(${TargetLibName} PUBLIC
 set(TargetTestName LoggingExeWithLibLinkTest)
 add_executable(${TargetTestName} 
 
-"main.cpp"
+"../main.cpp"
 
 )
 
@@ -41,5 +42,4 @@ target_compile_definitions(${TargetTestName} PRIVATE USE_LOGGING_LIB)
 # Add build dependencies
 add_dependencies(${TargetTestName} ${TargetLibName})
 
-message("Expecting to find shared logging lib at:" ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/${TargetLibName})
 target_link_libraries(${TargetTestName} PRIVATE ${TargetLibName})
