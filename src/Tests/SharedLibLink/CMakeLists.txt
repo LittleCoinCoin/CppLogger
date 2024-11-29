@@ -25,7 +25,7 @@ target_include_directories(${TargetLibName} PUBLIC
 set(TargetTestName LoggingExeWithLibLinkTest)
 add_executable(${TargetTestName} 
 
-"main.cpp"
+"../main.cpp"
 
 )
 

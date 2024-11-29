@@ -5,7 +5,7 @@ add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 set(TargetName LoggerDirectBuildTest)
 add_executable (${TargetName}
 
-"main.cpp"
+"../main.cpp"
 
 "../../Logging/ExeConsoleLoggerSink.cpp"
 "../../Logging/Logger.cpp"
