@@ -15,7 +15,7 @@ namespace Logging
 		@brief Default constructor that initializes the logging functions for
 				each log level.
 		*/
-		LOGGING_API TestLoggerSink() : LoggerSink()
+		LOGGING_API TestLoggerSink(const char* _name) : LoggerSink(_name)
 		{
 			loggingFunctions[LogLevel_Trace] = static_cast<LoggerSink::logFunc_pf>(&TestLoggerSink::LogTrace);
 			loggingFunctions[LogLevel_Debug] = static_cast<LoggerSink::logFunc_pf>(&TestLoggerSink::LogDebug);

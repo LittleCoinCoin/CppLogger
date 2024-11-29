@@ -15,7 +15,7 @@ const char* Logging::Logger::GetCurrentTime()
 std::size_t Logging::Logger::AddSink(LoggerSink* _loggerSink)
 {
 	loggerSinks.push_back(_loggerSink);
-	LOG_DEBUG("Logger sink added");
+	LOG_DEBUG("Adding LoggerSink '%s' at index: %llu", _loggerSink->name, loggerSinks.size() - 1);
 	return loggerSinks.size() - 1;
 }
 
@@ -39,6 +39,6 @@ void Logging::Logger::Log(LogLevel _logLvl, const char* _time, const char* _file
 
 void Logging::Logger::RemoveSink(std::size_t _idx)
 {
-	LOG_DEBUG("Removing Sink at index: %llu", _idx);
+	LOG_DEBUG("Removing LoggerSink '%s' at index: %llu", loggerSinks[_idx]->name, _idx);
 	loggerSinks.erase(loggerSinks.begin() + _idx);
 }

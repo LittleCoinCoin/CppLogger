@@ -56,8 +56,20 @@ namespace Logging
 
 	public:
 
-		LoggerSink() = default;
+		/*!
+		@brief The name of the logger sink.
+		*/
+		const char* name = nullptr;
 
+		/*!
+		@brief Default constructor that initializes the name of the sink.
+		@param _name The name of the sink.
+		*/
+		LoggerSink(const char* _name) : name(_name) {}
+
+		/*!
+		@brief Default destructor.
+		*/
 		virtual ~LoggerSink() = default;
 
 		/*!

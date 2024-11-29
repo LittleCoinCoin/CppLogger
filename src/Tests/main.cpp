@@ -5,7 +5,7 @@
 
 int main()
 {
-	Logging::TestLoggerSink* testLoggerSink = new Logging::TestLoggerSink();
+	Logging::TestLoggerSink* testLoggerSink = new Logging::TestLoggerSink("TestLoggerSink");
 	int testLoggerSinkIdx = Logging::Logger::AddSink(testLoggerSink);
 
 	LOG_TRACE("This is a trace message.");
@@ -20,7 +20,7 @@ int main()
 	Logging::Logger::RemoveSink(testLoggerSinkIdx);
 	delete testLoggerSink;
 
-	Logging::ExeConsoleLoggerSink* consoleExeLoggerSink = new Logging::ExeConsoleLoggerSink();
+	Logging::ExeConsoleLoggerSink* consoleExeLoggerSink = new Logging::ExeConsoleLoggerSink("ExeConsoleLoggerSink");
 	int consoleExeLoggerSinkIdx = Logging::Logger::AddSink(consoleExeLoggerSink);
 
 	LOG_TRACE("This is a trace message.");
