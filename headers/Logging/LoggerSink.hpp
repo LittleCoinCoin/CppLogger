@@ -1,6 +1,4 @@
 #pragma once
-#include <string>
-#include <functional>
 
 #include "LogLevels.hpp"
 #include "Export.hpp"
@@ -18,18 +16,18 @@ namespace Logging
 	class LoggerSink
 	{
 	protected:
-		std::function<void(const char*)> loggingFunctions[LogLevel_Count];
+		typedef void (LoggerSink::* logFunc_pf)(const char* /*_msg*/,
+			const char* /*_time*/, const char* /*_file*/, const char* /*_function*/,
+			int /*_line*/ ) const noexcept;
+		logFunc_pf loggingFunctions[LogLevel_Count];
 
 	public:
 
-		LOGGING_API LoggerSink() = default;
+		LoggerSink() = default;
 
-		LOGGING_API void Log(LogLevel _lvl, const char* _msg)
-		{
-			if (loggingFunctions[_lvl])
-			{
-				loggingFunctions[_lvl](_msg);
-			}
-		}
+		virtual ~LoggerSink() = default;
+
+		LOGGING_API void Log(LogLevel _lvl, const char* _msg,
+			const char* _time, const char* _file, const char* _function, const int _line) noexcept;
 	};
 }

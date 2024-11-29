@@ -6,8 +6,9 @@ add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 set(TargetLibName LoggingLibTest)
 add_library(${TargetLibName} SHARED
 
-"../../Logging/Logger.cpp"
 "../../Logging/ExeConsoleLoggerSink.cpp"
+"../../Logging/Logger.cpp"
+"../../Logging/LoggerSink.cpp"
 
 )
 
