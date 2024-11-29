@@ -26,11 +26,6 @@ namespace Logging
 			prefixFunctions[LogLevel_Debug] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::PrefixDebug);
 			prefixFunctions[LogLevel_Error] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::PrefixError);
 			prefixFunctions[LogLevel_Warning] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::PrefixWarning);
-		
-			suffixFunctions[LogLevel_Trace] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::SuffixTrace);
-			suffixFunctions[LogLevel_Debug] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::SuffixDebug);
-			suffixFunctions[LogLevel_Error] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::SuffixError);
-			suffixFunctions[LogLevel_Warning] = static_cast<LoggerSink::afix_pf>(&ExeConsoleLoggerSink::SuffixWarning);
 		}
 
 	private:
@@ -136,54 +131,6 @@ namespace Logging
 		@param _line The line (in the file) the message was logged from.
 		*/
 		void PrefixWarning(const char* _time, const char* _file,
-			const char* _function, const int _line) const noexcept;
-
-		/*!
-		@brief Prints the suffix for a message of type @a Trace in the console.
-		@details This function is meant to be registered in the ::prefixFunctions
-				 array for the @a LogLevel_Trace.
-		@param _time The time the message was logged.
-		@param _file The file the message was logged from.
-		@param _function The function the message was logged from.
-		@param _line The line (in the file) the message was logged from.
-		*/
-		void SuffixTrace(const char* _time, const char* _file,
-			const char* _function, const int _line) const noexcept;
-
-		/*!
-		@brief Prints the suffix for a message of type @a Debug in the console.
-		@details This function is meant to be registered in the ::prefixFunctions
-				 array for the @a LogLevel_Debug.
-		@param _time The time the message was logged.
-		@param _file The file the message was logged from.
-		@param _function The function the message was logged from.
-		@param _line The line (in the file) the message was logged from.
-		*/
-		void SuffixDebug(const char* _time, const char* _file,
-			const char* _function, const int _line) const noexcept;
-
-		/*!
-		@brief Prints the suffix for a message of type @a Error in the console.
-		@details This function is meant to be registered in the ::prefixFunctions
-				 array for the @a LogLevel_Error.
-		@param _time The time the message was logged.
-		@param _file The file the message was logged from.
-		@param _function The function the message was logged from.
-		@param _line The line (in the file) the message was logged from.
-		*/
-		void SuffixError(const char* _time, const char* _file,
-			const char* _function, const int _line) const noexcept;
-
-		/*!
-		@brief Prints the suffix for a message of type @a Warning in the console.
-		@details This function is meant to be registered in the ::prefixFunctions
-				 array for the @a LogLevel_Warning.
-		@param _time The time the message was logged.
-		@param _file The file the message was logged from.
-		@param _function The function the message was logged from.
-		@param _line The line (in the file) the message was logged from.
-		*/
-		void SuffixWarning(const char* _time, const char* _file,
 			const char* _function, const int _line) const noexcept;
 	};
 }
