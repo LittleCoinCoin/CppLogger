@@ -5,8 +5,8 @@
 
 int main()
 {
-	Logging::TestLoggerSink* logSink = new Logging::TestLoggerSink();
-	Logging::Logger::AddSink(logSink);
+	Logging::TestLoggerSink* testLoggerSink = new Logging::TestLoggerSink();
+	int testLoggerSinkIdx = Logging::Logger::AddSink(testLoggerSink);
 
 	LOG_TRACE("This is a trace message.");
 	LOG_TRACE("This is a trace message with an int: %u", 42);
@@ -17,11 +17,11 @@ int main()
 	LOG_WARNING("This is a warning message.");
 	LOG_WARNING("This is a warning message with a string: %s", "forty two");
 
-	Logging::Logger::RemoveSink(0);
-	delete logSink;
+	Logging::Logger::RemoveSink(testLoggerSinkIdx);
+	delete testLoggerSink;
 
-	Logging::ExeConsoleLoggerSink* consoleSink = new Logging::ExeConsoleLoggerSink();
-	Logging::Logger::AddSink(consoleSink);
+	Logging::ExeConsoleLoggerSink* consoleExeLoggerSink = new Logging::ExeConsoleLoggerSink();
+	int consoleExeLoggerSinkIdx = Logging::Logger::AddSink(consoleExeLoggerSink);
 
 	LOG_TRACE("This is a trace message.");
 	LOG_TRACE("This is a trace message with an int: %u", 42);
@@ -32,8 +32,8 @@ int main()
 	LOG_WARNING("This is a warning message.");
 	LOG_WARNING("This is a warning message with a string: %s", "forty two");
 
-	Logging::Logger::RemoveSink(0);
-	delete consoleSink;
+	Logging::Logger::RemoveSink(consoleExeLoggerSinkIdx);
+	delete consoleExeLoggerSink;
 
 	return 0;
 }

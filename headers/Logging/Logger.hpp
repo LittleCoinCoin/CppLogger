@@ -48,6 +48,7 @@ namespace Logging
 		/*!
 		@brief Adds a sink to ::loggerSinks.
 		@param _loggerSink The sink to add.
+		@return The index of the new sink in ::loggerSinks.
 		*/
 		static std::size_t AddSink(LoggerSink* _loggerSink);
 
