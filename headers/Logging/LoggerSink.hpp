@@ -23,7 +23,9 @@ namespace Logging
 
 	public:
 
-		LOGGING_API LoggerSink() = default;
+		LoggerSink() = default;
+
+		virtual ~LoggerSink() = default;
 
 		LOGGING_API void Log(LogLevel _lvl, const char* _msg,
 			const char* _time, const char* _file, const char* _function, const int _line) noexcept;
