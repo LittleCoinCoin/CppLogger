@@ -31,6 +31,7 @@ void Logging::Logger::Log(LogLevel _logLvl, const char* _time, const char* _file
 	{
 		(*it)->Prefix(_logLvl, _time, _file, _function, _line);
 		(*it)->Log(_logLvl, msgBuffer, _time, _file, _function, _line);
+		(*it)->Suffix(_logLvl, _time, _file, _function, _line);
 	}
 
 	va_end(args);

@@ -36,7 +36,7 @@ namespace Logging
 		/*!
 		@brief A custom type for the function pointer to log the prefix of a message.
 		*/
-		typedef void (LoggerSink::* prefix_pf)( const char* /*_time*/,
+		typedef void (LoggerSink::* afix_pf)( const char* /*_time*/,
 			const char* /*_file*/, const char* /*_function*/, int /*_line*/) const noexcept;
 		/*!
 		@brief The array of function pointers to log the prefix for each log level.
@@ -44,7 +44,15 @@ namespace Logging
 				 By default it is full of nullptrs. If you do not set a function pointers
 				 for a log level, the prefix will not be logged.
 		*/
-		prefix_pf prefixFunctions[LogLevel_Count] = { nullptr };
+		afix_pf prefixFunctions[LogLevel_Count] = { nullptr };
+
+		/*!
+		@brief The array of function pointers to log the suffix for each log level.
+		@details The index of the function in the array corresponds to the Logging::LogLevel.
+				 By default it is full of nullptrs. If you do not set a function pointers
+				 for a log level, the suffix will not be logged.
+		*/
+		afix_pf suffixFunctions[LogLevel_Count] = { nullptr };
 
 	public:
 
@@ -73,6 +81,17 @@ namespace Logging
 		@param _line The line (in the file) the message was logged from.
 		*/
 		LOGGING_API void Prefix(LogLevel _lvl, const char* _time, const char* _file,
+			const char* _function, const int _line) const noexcept;
+
+		/*!
+		@brief The function to log the suffix of a message.
+		@param _lvl The level of the message.
+		@param _time The time the message was logged.
+		@param _file The file the message was logged from.
+		@param _function The function the message was logged from.
+		@param _line The line (in the file) the message was logged from.
+		*/
+		LOGGING_API void Suffix(LogLevel _lvl, const char* _time, const char* _file,
 			const char* _function, const int _line) const noexcept;
 	};
 }

@@ -17,3 +17,12 @@ void Logging::LoggerSink::Prefix(LogLevel _lvl, const char* _time, const char* _
 		(this->*prefixFunctions[_lvl])(_time, _file, _function, _line);
 	}
 }
+
+void Logging::LoggerSink::Suffix(LogLevel _lvl, const char* _time, const char* _file,
+	const char* _function, const int _line) const noexcept
+{
+	if (suffixFunctions[_lvl])
+	{
+		(this->*suffixFunctions[_lvl])(_time, _file, _function, _line);
+	}
+}

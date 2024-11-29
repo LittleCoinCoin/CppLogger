@@ -48,3 +48,27 @@ void Logging::ExeConsoleLoggerSink::PrefixWarning(const char* _time, const char*
 {
 	std::cout << "[WARNING at '" << _time << "' from '" << _file << " in '" << _function << "-" << _line << "']\n\t";
 }
+
+void Logging::ExeConsoleLoggerSink::SuffixTrace(const char* _time, const char* _file,
+	const char* _function, const int _line) const noexcept
+{
+	std::cout << '\n' << std::endl;
+}
+
+void Logging::ExeConsoleLoggerSink::SuffixDebug(const char* _time, const char* _file,
+	const char* _function, const int _line) const noexcept
+{
+	std::cout << '\n' << std::endl;
+}
+
+void Logging::ExeConsoleLoggerSink::SuffixError(const char* _time, const char* _file,
+	const char* _function, const int _line) const noexcept
+{
+	std::cout << '\n' << std::endl;
+}
+
+void Logging::ExeConsoleLoggerSink::SuffixWarning(const char* _time, const char* _file,
+	const char* _function, const int _line) const noexcept
+{
+	std::cout << '\n' << std::endl;
+}
