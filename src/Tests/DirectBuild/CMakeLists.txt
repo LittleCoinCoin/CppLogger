@@ -9,6 +9,7 @@ add_executable (${TargetName}
 
 "../../Logging/ExeConsoleLoggerSink.cpp"
 "../../Logging/Logger.cpp"
+"../../Logging/LoggerSink.cpp"
 
 )
 
