@@ -4,6 +4,14 @@ char Logging::Logger::msgBuffer[Logging::Logger::maxMsgBufferSize] = { 0 };
 
 std::vector<Logging::LoggerSink*> Logging::Logger::loggerSinks = std::vector<LoggerSink*>();
 
+const char* Logging::Logger::GetCurrentTime()
+{
+	static char buf[100];
+	std::time_t now = std::time(nullptr);
+	std::strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
+	return buf;
+}
+
 std::size_t Logging::Logger::AddSink(LoggerSink* _loggerSink)
 {
 	loggerSinks.push_back(_loggerSink);
@@ -11,8 +19,8 @@ std::size_t Logging::Logger::AddSink(LoggerSink* _loggerSink)
 	return loggerSinks.size() - 1;
 }
 
-void Logging::Logger::Log(LogLevel _logLvl, const char* _file, const char* _function,
-	const char* _fmt, ...) noexcept
+void Logging::Logger::Log(LogLevel _logLvl, const char* _time, const char* _file,
+	const char* _function, const char* _fmt, ...) noexcept
 {
 	va_list args;
 	va_start(args, _fmt);
@@ -21,7 +29,7 @@ void Logging::Logger::Log(LogLevel _logLvl, const char* _file, const char* _func
 
 	for (std::vector<LoggerSink*>::iterator it = loggerSinks.begin(); it != loggerSinks.end(); it++)
 	{
-		(*it)->Log(_logLvl, msgBuffer, _file, _function);
+		(*it)->Log(_logLvl, msgBuffer, _time, _file, _function);
 	}
 
 	va_end(args);
