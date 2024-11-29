@@ -65,6 +65,6 @@ namespace Logging
 		@brief Removes the sink at index @p _idx from ::loggerSinks.
 		@param _idx The index of the sink to remove.
 		*/
-		static void RemoveSink(std::size_t& _idx);
+		static void RemoveSink(std::size_t _idx);
 	};
 }
