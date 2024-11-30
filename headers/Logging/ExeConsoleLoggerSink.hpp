@@ -15,7 +15,7 @@ namespace Logging
 		@brief Default constructor that initializes the logging functions for
 				each log level.
 		*/
-		LOGGING_API ExeConsoleLoggerSink() : LoggerSink()
+		LOGGING_API ExeConsoleLoggerSink(const char* _name) : LoggerSink(_name)
 		{
 			loggingFunctions[LogLevel_Trace] = static_cast<LoggerSink::logFunc_pf>(&ExeConsoleLoggerSink::LogTrace);
 			loggingFunctions[LogLevel_Debug] = static_cast<LoggerSink::logFunc_pf>(&ExeConsoleLoggerSink::LogDebug);

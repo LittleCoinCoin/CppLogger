@@ -5,8 +5,8 @@
 
 int main()
 {
-	Logging::TestLoggerSink* logSink = new Logging::TestLoggerSink();
-	Logging::Logger::AddSink(logSink);
+	Logging::TestLoggerSink* testLoggerSink = new Logging::TestLoggerSink("TestLoggerSink");
+	int testLoggerSinkIdx = Logging::Logger::AddSink(testLoggerSink);
 
 	LOG_TRACE("This is a trace message.");
 	LOG_TRACE("This is a trace message with an int: %u", 42);
@@ -17,11 +17,20 @@ int main()
 	LOG_WARNING("This is a warning message.");
 	LOG_WARNING("This is a warning message with a string: %s", "forty two");
 
-	Logging::Logger::RemoveSink(0);
-	delete logSink;
+	// Test reprinting everything when only the trace level is enabled.
+	Logging::Logger::SetEnabledLogLevels(Logging::LogLevelFlag_Trace);
+	LOG_TRACE("This is a trace message when only this LogLevel is enabled.");
+	LOG_DEBUG("This is a debug message when only the trace LogLevel is enabled."); // This should not be printed.
+	LOG_ERROR("This is an error message when only the trace LogLevel is enabled."); // This should not be printed.
+	LOG_WARNING("This is a warning message when only the trace LogLevel is enabled."); // This should not be printed.
 
-	Logging::ExeConsoleLoggerSink* consoleSink = new Logging::ExeConsoleLoggerSink();
-	Logging::Logger::AddSink(consoleSink);
+	Logging::Logger::RemoveSink(testLoggerSinkIdx);
+	delete testLoggerSink;
+
+	Logging::Logger::SetEnabledLogLevels(Logging::LogLevelFlag_All);
+
+	Logging::ExeConsoleLoggerSink* consoleExeLoggerSink = new Logging::ExeConsoleLoggerSink("ExeConsoleLoggerSink");
+	int consoleExeLoggerSinkIdx = Logging::Logger::AddSink(consoleExeLoggerSink);
 
 	LOG_TRACE("This is a trace message.");
 	LOG_TRACE("This is a trace message with an int: %u", 42);
@@ -32,8 +41,8 @@ int main()
 	LOG_WARNING("This is a warning message.");
 	LOG_WARNING("This is a warning message with a string: %s", "forty two");
 
-	Logging::Logger::RemoveSink(0);
-	delete consoleSink;
+	Logging::Logger::RemoveSink(consoleExeLoggerSinkIdx);
+	delete consoleExeLoggerSink;
 
 	return 0;
 }
