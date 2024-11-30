@@ -58,13 +58,13 @@ jobs:
           # This is the name of the CMakePresets.json's configuration to build the project.
           buildPreset: "MSVC ${{ matrix.build_config }} ${{ matrix.target_architecture }}"
       
-      - name: Runtime test DirectBuild
+      - name: Runtime test Direct Build
         uses: threeal/ctest-action@v1.0.0
         with:
           test-dir: out/build/MSVC-${{ matrix.target_architecture }}/src/Tests/DirectBuild
           build-config: ${{ matrix.build_config }}
       
-      - name: Runtime test Build with Shared Lib
+      - name: Runtime test Build with Link to Shared Lib
         uses: threeal/ctest-action@v1.0.0
         with:
           test-dir: out/build/MSVC-${{ matrix.target_architecture }}/src/Tests/SharedLibLink
