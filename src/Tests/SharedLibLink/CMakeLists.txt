@@ -10,7 +10,7 @@ add_library(${TargetLibName} SHARED
 "../../Logging/Logger.cpp"
 "../../Logging/LoggerSink.cpp"
 
-"../src/TestLoggerSink.cpp"
+"../TestLoggerSink.cpp"
 )
 
 target_compile_features(${TargetLibName} PUBLIC cxx_std_20)

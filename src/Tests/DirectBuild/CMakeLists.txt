@@ -11,7 +11,7 @@ add_executable (${TargetName}
 "../../Logging/Logger.cpp"
 "../../Logging/LoggerSink.cpp"
 
-"../src/TestLoggerSink.cpp"
+"../TestLoggerSink.cpp"
 )
 
 target_compile_features(${TargetName} PUBLIC cxx_std_20)
