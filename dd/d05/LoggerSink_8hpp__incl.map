@@ -1,0 +1,5 @@
+<map id="headers/Logging/LoggerSink.hpp" name="headers/Logging/LoggerSink.hpp">
+<area shape="rect" id="node1" title="Declares the interface for a sink for the logger." alt="" coords="12,5,223,31"/>
+<area shape="rect" id="node2" href="$d6/d01/LogLevels_8hpp.html" title="Declares the enum to describe log levels." alt="" coords="5,79,112,105"/>
+<area shape="rect" id="node3" href="$d8/d03/Export_8hpp.html" title="Declares the macros to export and import symbols from the library." alt="" coords="135,79,217,105"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Logging::ExeConsoleLoggerSink" name="Logging::ExeConsoleLoggerSink">
+<area shape="rect" id="node1" title="The Logger sink to receive log messages and print them in the executables console." alt="" coords="5,79,213,105"/>
+<area shape="rect" id="node2" href="$d5/d01/classLogging_1_1LoggerSink.html" title=" " alt="" coords="39,5,179,31"/>
+</map>

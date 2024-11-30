@@ -1,0 +1,8 @@
+<map id="src/Logging/ExeConsoleLoggerSink.cpp" name="src/Logging/ExeConsoleLoggerSink.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="15,5,216,46"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,77,127"/>
+<area shape="rect" id="node3" href="$dd/d05/ExeConsoleLoggerSink_8hpp.html" title="Declares the class providing a sink for the logger to print messages in the console." alt="" coords="101,94,280,135"/>
+<area shape="rect" id="node4" href="$d2/d00/LoggerSink_8hpp.html" title="Declares the interface for a sink for the logger." alt="" coords="110,183,271,208"/>
+<area shape="rect" id="node5" href="$d6/d01/LogLevels_8hpp.html" title="Declares the enum to describe log levels." alt="" coords="79,256,185,282"/>
+<area shape="rect" id="node6" href="$d8/d03/Export_8hpp.html" title="Declares the macros to export and import symbols from the library." alt="" coords="208,256,290,282"/>
+</map>

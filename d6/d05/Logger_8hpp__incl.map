@@ -1,0 +1,10 @@
+<map id="headers/Logging/Logger.hpp" name="headers/Logging/Logger.hpp">
+<area shape="rect" id="node1" title="Declares the static struct to handle logging to different sinks." alt="" coords="108,5,293,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,79,62,105"/>
+<area shape="rect" id="node3" title=" " alt="" coords="85,79,150,105"/>
+<area shape="rect" id="node4" title=" " alt="" coords="174,79,227,105"/>
+<area shape="rect" id="node5" title=" " alt="" coords="252,79,309,105"/>
+<area shape="rect" id="node6" href="$d2/d00/LoggerSink_8hpp.html" title="Declares the interface for a sink for the logger." alt="" coords="333,79,494,105"/>
+<area shape="rect" id="node7" href="$d6/d01/LogLevels_8hpp.html" title="Declares the enum to describe log levels." alt="" coords="302,153,408,178"/>
+<area shape="rect" id="node8" href="$d8/d03/Export_8hpp.html" title="Declares the macros to export and import symbols from the library." alt="" coords="432,153,513,178"/>
+</map>

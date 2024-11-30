@@ -1,0 +1,13 @@
+<map id="src/Tests/main.cpp" name="src/Tests/main.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="230,5,363,31"/>
+<area shape="rect" id="node2" href="$dd/d05/ExeConsoleLoggerSink_8hpp.html" title="Declares the class providing a sink for the logger to print messages in the console." alt="" coords="5,79,185,120"/>
+<area shape="rect" id="node6" href="$d9/d01/Logger_8hpp.html" title="Declares the static struct to handle logging to different sinks." alt="" coords="407,87,543,112"/>
+<area shape="rect" id="node11" href="$dd/d02/TestLoggerSink_8hpp.html" title=" " alt="" coords="209,87,384,112"/>
+<area shape="rect" id="node3" href="$d2/d00/LoggerSink_8hpp.html" title="Declares the interface for a sink for the logger." alt="" coords="177,168,338,193"/>
+<area shape="rect" id="node4" href="$d6/d01/LogLevels_8hpp.html" title="Declares the enum to describe log levels." alt="" coords="146,241,252,267"/>
+<area shape="rect" id="node5" href="$d8/d03/Export_8hpp.html" title="Declares the macros to export and import symbols from the library." alt="" coords="276,241,357,267"/>
+<area shape="rect" id="node7" title=" " alt="" coords="363,168,419,193"/>
+<area shape="rect" id="node8" title=" " alt="" coords="443,168,507,193"/>
+<area shape="rect" id="node9" title=" " alt="" coords="531,168,584,193"/>
+<area shape="rect" id="node10" title=" " alt="" coords="609,168,666,193"/>
+</map>

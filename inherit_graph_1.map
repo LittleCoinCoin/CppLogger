@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d5/d01/classLogging_1_1LoggerSink.html" title=" " alt="" coords="5,31,145,56"/>
+<area shape="rect" id="node2" href="$d7/d05/classLogging_1_1ExeConsoleLoggerSink.html" title="The Logger sink to receive log messages and print them in the executables console." alt="" coords="193,5,400,31"/>
+<area shape="rect" id="node3" href="$d7/d02/classLogging_1_1TestLoggerSink.html" title="The Logger sink that will be used to demonstrate and test all the public API of the logging code that..." alt="" coords="214,55,379,80"/>
+</map>
