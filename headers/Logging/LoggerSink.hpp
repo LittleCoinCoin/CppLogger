@@ -1,5 +1,10 @@
 #pragma once
 
+/*!
+@file LoggerSink.hpp
+@brief Declares the interface for a sink for the logger.
+*/
+
 #include "LogLevels.hpp"
 #include "Export.hpp"
 
