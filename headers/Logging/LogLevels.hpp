@@ -1,7 +1,7 @@
 #pragma once
 
 /*!
-@file LogLevel.h
+@file LogLevels.hpp
 @brief Declares the enum to describe log levels.
 */
 
@@ -13,9 +13,9 @@ namespace Logging
 	enum LogLevel : unsigned char
 	{
 		LogLevel_Debug, /*!< Intended to be used to print messages during development.*/
-		LogLevel_Error, /*!< Reports errors to the user of the engine.*/
-		LogLevel_Trace, /*!< Reports operation performed by the engine to the user.*/
-		LogLevel_Warning, /*!< Reports warnings to the user.*/
+		LogLevel_Error, /*!< Reports errors.*/
+		LogLevel_Trace, /*!< Reports operations.*/
+		LogLevel_Warning, /*!< Reports warnings.*/
 
 		LogLevel_Count /*!< The number of log levels.*/
 	};
@@ -25,11 +25,11 @@ namespace Logging
 	*/
 	enum LogLevelFlag : unsigned char
 	{
-		LogLevelFlag_None = 0,
-		LogLevelFlag_Debug = 1 << LogLevel_Debug,
-		LogLevelFlag_Error = 1 << LogLevel_Error,
-		LogLevelFlag_Trace = 1 << LogLevel_Trace,
-		LogLevelFlag_Warning = 1 << LogLevel_Warning,
-		LogLevelFlag_All = LogLevelFlag_Debug | LogLevelFlag_Error | LogLevelFlag_Trace | LogLevelFlag_Warning
+		LogLevelFlag_None = 0, /*!< No log levels are enabled.*/
+		LogLevelFlag_Debug = 1 << LogLevel_Debug, /*!< The Debug log level is enabled.*/
+		LogLevelFlag_Error = 1 << LogLevel_Error, /*!< The Error log level is enabled.*/
+		LogLevelFlag_Trace = 1 << LogLevel_Trace, /*!< The Trace log level is enabled.*/
+		LogLevelFlag_Warning = 1 << LogLevel_Warning, /*!< The Warning log level is enabled.*/
+		LogLevelFlag_All = LogLevelFlag_Debug | LogLevelFlag_Error | LogLevelFlag_Trace | LogLevelFlag_Warning /*!< All log levels are enabled.*/
 	};
 }

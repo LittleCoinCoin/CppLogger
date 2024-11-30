@@ -1,4 +1,10 @@
 #pragma once
+
+/*!
+@file ExeConsoleLoggerSink.hpp
+@brief Declares the class providing a sink for the logger to print messages in the console.
+*/
+
 #include "Logging/LoggerSink.hpp"
 
 namespace Logging
