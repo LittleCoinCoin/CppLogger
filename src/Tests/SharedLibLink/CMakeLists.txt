@@ -43,3 +43,7 @@ target_compile_definitions(${TargetTestName} PRIVATE USE_LOGGING_LIB)
 add_dependencies(${TargetTestName} ${TargetLibName})
 
 target_link_libraries(${TargetTestName} PRIVATE ${TargetLibName})
+
+if(RUNTIME_LOGGING_TESTS)
+	add_test(NAME ${TargetTestName} COMMAND ${TargetTestName})
+endif()

@@ -17,3 +17,7 @@ add_executable (${TargetName}
 target_compile_features(${TargetName} PUBLIC cxx_std_20)
 
 target_include_directories(${TargetName} PRIVATE "../../../headers")
+
+if(RUNTIME_LOGGING_TESTS)
+	add_test(NAME ${TargetName} COMMAND ${TargetName})
+endif()
