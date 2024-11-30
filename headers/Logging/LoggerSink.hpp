@@ -54,6 +54,28 @@ namespace Logging
 		*/
 		afix_pf suffixFunctions[LogLevel_Count] = { nullptr };
 
+		/*!
+		@brief The function to log the prefix of a message.
+		@param _lvl The level of the message.
+		@param _time The time the message was logged.
+		@param _file The file the message was logged from.
+		@param _function The function the message was logged from.
+		@param _line The line (in the file) the message was logged from.
+		*/
+		void Prefix(LogLevel _lvl, const char* _time, const char* _file,
+			const char* _function, const int _line) const noexcept;
+
+		/*!
+		@brief The function to log the suffix of a message.
+		@param _lvl The level of the message.
+		@param _time The time the message was logged.
+		@param _file The file the message was logged from.
+		@param _function The function the message was logged from.
+		@param _line The line (in the file) the message was logged from.
+		*/
+		void Suffix(LogLevel _lvl, const char* _time, const char* _file,
+			const char* _function, const int _line) const noexcept;
+
 	public:
 
 		/*!
@@ -83,27 +105,5 @@ namespace Logging
 		*/
 		LOGGING_API void Log(LogLevel _lvl, const char* _msg,
 			const char* _time, const char* _file, const char* _function, const int _line) noexcept;
-	
-		/*!
-		@brief The function to log the prefix of a message.
-		@param _lvl The level of the message.
-		@param _time The time the message was logged.
-		@param _file The file the message was logged from.
-		@param _function The function the message was logged from.
-		@param _line The line (in the file) the message was logged from.
-		*/
-		LOGGING_API void Prefix(LogLevel _lvl, const char* _time, const char* _file,
-			const char* _function, const int _line) const noexcept;
-
-		/*!
-		@brief The function to log the suffix of a message.
-		@param _lvl The level of the message.
-		@param _time The time the message was logged.
-		@param _file The file the message was logged from.
-		@param _function The function the message was logged from.
-		@param _line The line (in the file) the message was logged from.
-		*/
-		LOGGING_API void Suffix(LogLevel _lvl, const char* _time, const char* _file,
-			const char* _function, const int _line) const noexcept;
 	};
 }
