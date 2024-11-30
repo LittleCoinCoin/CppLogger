@@ -19,4 +19,17 @@ namespace Logging
 
 		LogLevel_Count /*!< The number of log levels.*/
 	};
+
+	/*!
+	@brief An enum to describe which log levels are enabled.
+	*/
+	enum LogLevelFlag : unsigned char
+	{
+		LogLevelFlag_None = 0,
+		LogLevelFlag_Debug = 1 << LogLevel_Debug,
+		LogLevelFlag_Error = 1 << LogLevel_Error,
+		LogLevelFlag_Trace = 1 << LogLevel_Trace,
+		LogLevelFlag_Warning = 1 << LogLevel_Warning,
+		LogLevelFlag_All = LogLevelFlag_Debug | LogLevelFlag_Error | LogLevelFlag_Trace | LogLevelFlag_Warning
+	};
 }

@@ -21,6 +21,14 @@ namespace Logging
 	struct LOGGING_API Logger
 	{
 		/*!
+		@brief The log level flag to determine which log levels are enabled.
+				By default all log levels are enabled.
+		@details To disable a log level, set the corresponding bit to 0. In such
+				 cases, messages of that will not be dispatched to the sinks.
+		*/
+		static LogLevelFlag logLevelFlag;
+
+		/*!
 		@brief Maximum size of a message that can be logged at a time.
 		*/
 		static constexpr unsigned short maxMsgBufferSize = 1024;
@@ -46,11 +54,27 @@ namespace Logging
 		static const char* GetCurrentTime();
 
 		/*!
+		@brief Sets the value of ::logLevelFlag to that of @p _logLvlFlag.
+		@details ::logLevelFlag is also public, but we advise using this 
+				 function for clarity. It's up to you ;)
+		*/
+		static void SetEnabledLogLevels(LogLevelFlag _logLvlFlag) noexcept;
+
+		/*!
 		@brief Adds a sink to ::loggerSinks.
 		@param _loggerSink The sink to add.
 		@return The index of the new sink in ::loggerSinks.
 		*/
 		static std::size_t AddSink(LoggerSink* _loggerSink);
+
+		/*!
+		@brief Checks if the log level is enabled.
+		@details Performs a bitwise AND operation on the log level flag and the
+				 log level to check if the log level is enabled.
+		@param _logLvl The log level to check.
+		@return True if the log level is enabled, false otherwise.
+		*/
+		static bool IsLogLevelEnabled(LogLevel _logLvl) noexcept;
 
 		/*!
 		@brief Assembles and sends a message to all sinks with the level @p _logLvl.

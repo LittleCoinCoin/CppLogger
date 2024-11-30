@@ -17,8 +17,17 @@ int main()
 	LOG_WARNING("This is a warning message.");
 	LOG_WARNING("This is a warning message with a string: %s", "forty two");
 
+	// Test reprinting everything when only the trace level is enabled.
+	Logging::Logger::SetEnabledLogLevels(Logging::LogLevelFlag_Trace);
+	LOG_TRACE("This is a trace message when only this LogLevel is enabled.");
+	LOG_DEBUG("This is a debug message when only the trace LogLevel is enabled."); // This should not be printed.
+	LOG_ERROR("This is an error message when only the trace LogLevel is enabled."); // This should not be printed.
+	LOG_WARNING("This is a warning message when only the trace LogLevel is enabled."); // This should not be printed.
+
 	Logging::Logger::RemoveSink(testLoggerSinkIdx);
 	delete testLoggerSink;
+
+	Logging::Logger::SetEnabledLogLevels(Logging::LogLevelFlag_All);
 
 	Logging::ExeConsoleLoggerSink* consoleExeLoggerSink = new Logging::ExeConsoleLoggerSink("ExeConsoleLoggerSink");
 	int consoleExeLoggerSinkIdx = Logging::Logger::AddSink(consoleExeLoggerSink);
