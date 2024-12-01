@@ -4,7 +4,7 @@ The CppLogger repository provides a logging system for C++ projects. It allows t
 
 ## Documentation
 
-Please, visit the dedicated [documentation page](littlecoincoin.github.io/CppLogger/) for more information on how to use this repository.
+Please, visit the dedicated [documentation page](https://littlecoincoin.github.io/CppLogger/) for more information on how to use this repository.
 
 ## Tested platforms
 
