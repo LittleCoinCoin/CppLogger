@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['testloggersink_0',['TestLoggerSink',['../d7/d02/classLogging_1_1TestLoggerSink.html',1,'Logging::TestLoggerSink'],['../d7/d02/classLogging_1_1TestLoggerSink.html#ac8376b970f9757f91b916e3a669d8a13',1,'Logging::TestLoggerSink::TestLoggerSink()']]],
-  ['testloggersink_2ecpp_1',['TestLoggerSink.cpp',['../dc/d04/TestLoggerSink_8cpp.html',1,'']]],
-  ['testloggersink_2ehpp_2',['TestLoggerSink.hpp',['../dd/d02/TestLoggerSink_8hpp.html',1,'']]],
-  ['todo_20list_3',['Todo List',['../dd/d00/todo.html',1,'']]]
+  ['setenabledloglevels_0',['SetEnabledLogLevels',['../de/d03/structLogging_1_1Logger.html#ab09c7c50eaf6affb484e7a12eb31ee6d',1,'Logging::Logger']]],
+  ['suffix_1',['Suffix',['../d5/d01/classLogging_1_1LoggerSink.html#a223cd2308817f07ced28bf223756b988',1,'Logging::LoggerSink']]],
+  ['suffixdebug_2',['SuffixDebug',['../d7/d02/classLogging_1_1TestLoggerSink.html#abec36e6cdbee86d2b20a233226de4c4c',1,'Logging::TestLoggerSink']]],
+  ['suffixerror_3',['SuffixError',['../d7/d02/classLogging_1_1TestLoggerSink.html#a93abbd06ee259b189c9e19bb9a0e4f62',1,'Logging::TestLoggerSink']]],
+  ['suffixfunctions_4',['suffixFunctions',['../d5/d01/classLogging_1_1LoggerSink.html#ac48919fdf7c1815a160f6e37a673642c',1,'Logging::LoggerSink']]],
+  ['suffixtrace_5',['SuffixTrace',['../d7/d02/classLogging_1_1TestLoggerSink.html#a92839e25d7f3e342e591a9fa6f5d2a7e',1,'Logging::TestLoggerSink']]],
+  ['suffixwarning_6',['SuffixWarning',['../d7/d02/classLogging_1_1TestLoggerSink.html#a22982332083367326bb8ccdce20c4075',1,'Logging::TestLoggerSink']]]
 ];

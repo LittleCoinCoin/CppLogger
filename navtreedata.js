@@ -25,6 +25,12 @@
 var NAVTREE =
 [
   [ "CppLogger", "index.html", [
+    [ "Overview", "index.html", "index" ],
+    [ "Advanced", "d5/d05/advanced.html", [
+      [ "Log Levels", "d5/d05/advanced.html#autotoc_md0", null ],
+      [ "Function Pointer Signatures in LoggerSink", "d5/d05/advanced.html#autotoc_md1", null ],
+      [ "Adding Prefix and Suffix Functions", "d5/d05/advanced.html#autotoc_md2", null ]
+    ] ],
     [ "Todo List", "dd/d00/todo.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

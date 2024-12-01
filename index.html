@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CppLogger: Main Page</title>
+<title>CppLogger: Overview</title>
 <!--BEGIN PROJECT_ICON-->
 <link rel="icon" href="$projecticon" type="image/x-icon" />
 <!--END PROJECT_ICON-->
@@ -54,7 +54,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CppLogger<span id="projectnumber">&#160;0.1.0.5.43</span>
+   <div id="projectname">CppLogger<span id="projectnumber">&#160;0.1.0.6.44</span>
    </div>
    <div id="projectbrief">A logging system for c++ projects.</div>
   </td>
@@ -117,10 +117,142 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">CppLogger Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Overview </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="mainpage"></a> </p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Purpose</h1>
+<p>The CppLogger repository provides a logging system for C++ projects. It allows to dispatch log messages to different "sinks" (outputs) with various log levels such as Debug, Trace, Warning, and Error.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+How to Use This Repository</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Cloning the Repository</h2>
+<ol type="1">
+<li><p class="startli"><b>Clone the Repository</b>:</p>
+<div class="fragment"><div class="line">git clone https://github.com/LittleCoinCoin/CppLogger.git</div>
+<div class="line">cd CppLogger</div>
+</div><!-- fragment --></li>
+<li><p class="startli"><b>Build Options</b>: The repository provides several build options that can be configured using CMake options:</p><ul>
+<li><code>BUILD_LOGGING_LIBRARY</code> (default: ON): Build the library for the logger.</li>
+<li><code>BUILD_LOGGING_TESTS</code> (default: ON): Build the test executables for the logger.</li>
+<li><code>RUNTIME_LOGGING_TESTS</code> (default: ON): Run the tests after building. This option takes effect only if <code>BUILD_LOGGING_TESTS</code> is ON.</li>
+</ul>
+<p class="startli">You can set these options when running CMake:</p>
+<div class="fragment"><div class="line">mkdir build</div>
+<div class="line">cd build</div>
+<div class="line">cmake -DBUILD_LOGGING_LIBRARY=ON -DBUILD_LOGGING_TESTS=ON -DRUNTIME_LOGGING_TESTS=ON ..</div>
+<div class="line">make</div>
+</div><!-- fragment --></li>
+<li><b>Using the Logger in Your Project</b>: You can use the logger in your project in two ways:<ul>
+<li><p class="startli"><b>Using the Shared Library</b>: Link against the <code>LoggingLib</code> library and include its headers.</p>
+<div class="fragment"><div class="line">target_link_libraries(your_target PRIVATE LoggingLib)</div>
+<div class="line">target_include_directories(your_target PRIVATE ${CMAKE_SOURCE_DIR}/headers)</div>
+</div><!-- fragment --></li>
+<li><p class="startli"><b>Directly Including Source Files</b>: You can directly include the source files in your executable.</p>
+<div class="fragment"><div class="line">add_executable(your_target</div>
+<div class="line">&quot;path/to/your/source.cpp&quot;</div>
+<div class="line"> </div>
+<div class="line">&quot;src/Logging/ExeConsoleLoggerSink.cpp&quot;</div>
+<div class="line">&quot;src/Logging/Logger.cpp&quot;</div>
+<div class="line">&quot;src/Logging/LoggerSink.cpp&quot;</div>
+<div class="line">)</div>
+<div class="line">target_include_directories(your_target PRIVATE ${CMAKE_SOURCE_DIR}/headers)</div>
+<div class="line">target_compile_features(your_target PUBLIC cxx_std_20)</div>
+</div><!-- fragment --></li>
+</ul>
+</li>
+<li><p class="startli"><b>Building and Running Tests</b>: The repository includes tests for the logger, which are built and run by default if the corresponding options are enabled.</p>
+<div class="fragment"><div class="line">cmake -DBUILD_LOGGING_TESTS=ON -DRUNTIME_LOGGING_TESTS=ON ..</div>
+<div class="line">make</div>
+<div class="line">ctest</div>
+</div><!-- fragment --><p class="startli">This will compile and run the tests located in the <code>src/Tests</code> directory.</p>
+</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Adding as a Git Submodule</h2>
+<ol type="1">
+<li><p class="startli"><b>Add the Repository as a Submodule</b>:</p>
+<div class="fragment"><div class="line">git submodule add https://github.com/LittleCoinCoin/CppLogger.git path/to/CppLogger</div>
+<div class="line">git submodule update --init --recursive</div>
+</div><!-- fragment --></li>
+<li><b>Build Options</b>: Configure the build options as described above.</li>
+<li><b>Using the Logger in Your Project</b>: Follow the same instructions for using the logger in your project, whether linking against the <code>LoggingLib</code> library or directly including the source files. Adjust the paths accordingly to reflect the submodule's location.</li>
+</ol>
+<p>For more detailed build and usage instructions, refer to the individual <code>CMakeLists.txt</code> files in the repository.</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+How to Implement a Custom Logger Sink</h1>
+<p>To add your own valid logger sink to the CppLogger system, follow these steps:</p>
+<ol type="1">
+<li><p class="startli"><b>Create Your Custom Logger Sink</b>: Derive a class from <code><a class="el" href="d5/d01/classLogging_1_1LoggerSink.html">Logging::LoggerSink</a></code> and implement the required logging functions. Below is an example of how to create a new custom sink:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="d2/d00/LoggerSink_8hpp.html">Logging/LoggerSink.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>CustomLoggerSink : <span class="keyword">public</span> <a class="code hl_class" href="d5/d01/classLogging_1_1LoggerSink.html">Logging::LoggerSink</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    CustomLoggerSink(<span class="keyword">const</span> <span class="keywordtype">char</span>* name) : <a class="code hl_namespace" href="d4/d00/namespaceLogging.html">Logging</a>::LoggerSink(name) {</div>
+<div class="line">        loggingFunctions[<a class="code hl_enumvalue" href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a2d761199c9233fd350e1be433e5e033e">Logging::LogLevel_Trace</a>] = <span class="keyword">static_cast&lt;</span>logFunc_pf<span class="keyword">&gt;</span>(&amp;CustomLoggerSink::LogTrace);</div>
+<div class="line">        loggingFunctions[<a class="code hl_enumvalue" href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a886abbb8076a34f8f5ce112298d0c400">Logging::LogLevel_Debug</a>] = <span class="keyword">static_cast&lt;</span>logFunc_pf<span class="keyword">&gt;</span>(&amp;CustomLoggerSink::LogDebug);</div>
+<div class="line">        loggingFunctions[<a class="code hl_enumvalue" href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a721d4b457e3f99d05acac412e4470aa7">Logging::LogLevel_Error</a>] = <span class="keyword">static_cast&lt;</span>logFunc_pf<span class="keyword">&gt;</span>(&amp;CustomLoggerSink::LogError);</div>
+<div class="line">        loggingFunctions[<a class="code hl_enumvalue" href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a4450ca7e9906876cbda03ad590d36158">Logging::LogLevel_Warning</a>] = <span class="keyword">static_cast&lt;</span>logFunc_pf<span class="keyword">&gt;</span>(&amp;CustomLoggerSink::LogWarning);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">    <span class="keywordtype">void</span> LogTrace(<span class="keyword">const</span> <span class="keywordtype">char</span>* msg, <span class="keyword">const</span> <span class="keywordtype">char</span>* time, <span class="keyword">const</span> <span class="keywordtype">char</span>* file, <span class="keyword">const</span> <span class="keywordtype">char</span>* function, <span class="keywordtype">int</span> line) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line">        <span class="comment">// Implement your custom logging for trace messages here</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> LogDebug(<span class="keyword">const</span> <span class="keywordtype">char</span>* msg, <span class="keyword">const</span> <span class="keywordtype">char</span>* time, <span class="keyword">const</span> <span class="keywordtype">char</span>* file, <span class="keyword">const</span> <span class="keywordtype">char</span>* function, <span class="keywordtype">int</span> line) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line">        <span class="comment">// Implement your custom logging for debug messages here</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> LogError(<span class="keyword">const</span> <span class="keywordtype">char</span>* msg, <span class="keyword">const</span> <span class="keywordtype">char</span>* time, <span class="keyword">const</span> <span class="keywordtype">char</span>* file, <span class="keyword">const</span> <span class="keywordtype">char</span>* function, <span class="keywordtype">int</span> line) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line">        <span class="comment">// Implement your custom logging for error messages here</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> LogWarning(<span class="keyword">const</span> <span class="keywordtype">char</span>* msg, <span class="keyword">const</span> <span class="keywordtype">char</span>* time, <span class="keyword">const</span> <span class="keywordtype">char</span>* file, <span class="keyword">const</span> <span class="keywordtype">char</span>* function, <span class="keywordtype">int</span> line) <span class="keyword">const</span> <span class="keyword">noexcept</span> {</div>
+<div class="line">        <span class="comment">// Implement your custom logging for warning messages here</span></div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="ttc" id="aLoggerSink_8hpp_html"><div class="ttname"><a href="d2/d00/LoggerSink_8hpp.html">LoggerSink.hpp</a></div><div class="ttdoc">Declares the interface for a sink for the logger.</div></div>
+<div class="ttc" id="aclassLogging_1_1LoggerSink_html"><div class="ttname"><a href="d5/d01/classLogging_1_1LoggerSink.html">Logging::LoggerSink</a></div><div class="ttdef"><b>Definition:</b> LoggerSink.hpp:23</div></div>
+<div class="ttc" id="anamespaceLogging_html"><div class="ttname"><a href="d4/d00/namespaceLogging.html">Logging</a></div><div class="ttdef"><b>Definition:</b> ExeConsoleLoggerSink.hpp:11</div></div>
+<div class="ttc" id="anamespaceLogging_html_aee865b08d987242701cd3ca700f70b14a2d761199c9233fd350e1be433e5e033e"><div class="ttname"><a href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a2d761199c9233fd350e1be433e5e033e">Logging::LogLevel_Trace</a></div><div class="ttdeci">@ LogLevel_Trace</div><div class="ttdef"><b>Definition:</b> LogLevels.hpp:17</div></div>
+<div class="ttc" id="anamespaceLogging_html_aee865b08d987242701cd3ca700f70b14a4450ca7e9906876cbda03ad590d36158"><div class="ttname"><a href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a4450ca7e9906876cbda03ad590d36158">Logging::LogLevel_Warning</a></div><div class="ttdeci">@ LogLevel_Warning</div><div class="ttdef"><b>Definition:</b> LogLevels.hpp:18</div></div>
+<div class="ttc" id="anamespaceLogging_html_aee865b08d987242701cd3ca700f70b14a721d4b457e3f99d05acac412e4470aa7"><div class="ttname"><a href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a721d4b457e3f99d05acac412e4470aa7">Logging::LogLevel_Error</a></div><div class="ttdeci">@ LogLevel_Error</div><div class="ttdef"><b>Definition:</b> LogLevels.hpp:16</div></div>
+<div class="ttc" id="anamespaceLogging_html_aee865b08d987242701cd3ca700f70b14a886abbb8076a34f8f5ce112298d0c400"><div class="ttname"><a href="d4/d00/namespaceLogging.html#aee865b08d987242701cd3ca700f70b14a886abbb8076a34f8f5ce112298d0c400">Logging::LogLevel_Debug</a></div><div class="ttdeci">@ LogLevel_Debug</div><div class="ttdef"><b>Definition:</b> LogLevels.hpp:15</div></div>
+</div><!-- fragment --></li>
+<li><p class="startli"><b>Add Your Custom Sink to the Logger</b>: In your main application or test file, add an instance of your custom sink to the logger:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="d9/d01/Logger_8hpp.html">Logging/Logger.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;CustomLoggerSink.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="df/d02/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
+<div class="line">    CustomLoggerSink* customSink = <span class="keyword">new</span> CustomLoggerSink(<span class="stringliteral">&quot;CustomLoggerSink&quot;</span>);</div>
+<div class="line">    <span class="keywordtype">int</span> customSinkIdx = <a class="code hl_function" href="de/d03/structLogging_1_1Logger.html#ab6865d3c7d84770bad681ef19c6c7d92">Logging::Logger::AddSink</a>(customSink);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="d9/d01/Logger_8hpp.html#a20f022b1b58ba62e014b624fdd13572c">LOG_TRACE</a>(<span class="stringliteral">&quot;This is a trace message.&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="d9/d01/Logger_8hpp.html#ac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a>(<span class="stringliteral">&quot;This is a debug message.&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="d9/d01/Logger_8hpp.html#ae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;This is an error message.&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="d9/d01/Logger_8hpp.html#afde44945335adc0c0ae2986fea13438f">LOG_WARNING</a>(<span class="stringliteral">&quot;This is a warning message.&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="de/d03/structLogging_1_1Logger.html#a33757022d2a4745a1bcebf885548e00c">Logging::Logger::RemoveSink</a>(customSinkIdx);</div>
+<div class="line">    <span class="keyword">delete</span> customSink;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aLogger_8hpp_html"><div class="ttname"><a href="d9/d01/Logger_8hpp.html">Logger.hpp</a></div><div class="ttdoc">Declares the static struct to handle logging to different sinks.</div></div>
+<div class="ttc" id="aLogger_8hpp_html_a20f022b1b58ba62e014b624fdd13572c"><div class="ttname"><a href="d9/d01/Logger_8hpp.html#a20f022b1b58ba62e014b624fdd13572c">LOG_TRACE</a></div><div class="ttdeci">#define LOG_TRACE(fmt,...)</div><div class="ttdoc">The macro to log a message with the level Trace.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:32</div></div>
+<div class="ttc" id="aLogger_8hpp_html_ac06cfc686322558f590c50eab8622ebd"><div class="ttname"><a href="d9/d01/Logger_8hpp.html#ac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(fmt,...)</div><div class="ttdoc">The macro to log a message with the level Debug.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:26</div></div>
+<div class="ttc" id="aLogger_8hpp_html_ae6fc70e87e424e7083c63696b8fb9e78"><div class="ttname"><a href="d9/d01/Logger_8hpp.html#ae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(fmt,...)</div><div class="ttdoc">The macro to log a message with the level Error.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:44</div></div>
+<div class="ttc" id="aLogger_8hpp_html_afde44945335adc0c0ae2986fea13438f"><div class="ttname"><a href="d9/d01/Logger_8hpp.html#afde44945335adc0c0ae2986fea13438f">LOG_WARNING</a></div><div class="ttdeci">#define LOG_WARNING(fmt,...)</div><div class="ttdoc">The macro to log a message with the level Warning.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:38</div></div>
+<div class="ttc" id="amain_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="df/d02/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> main.cpp:6</div></div>
+<div class="ttc" id="astructLogging_1_1Logger_html_a33757022d2a4745a1bcebf885548e00c"><div class="ttname"><a href="de/d03/structLogging_1_1Logger.html#a33757022d2a4745a1bcebf885548e00c">Logging::Logger::RemoveSink</a></div><div class="ttdeci">static void RemoveSink(std::size_t _idx)</div><div class="ttdoc">Removes the sink at index _idx from loggerSinks.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:53</div></div>
+<div class="ttc" id="astructLogging_1_1Logger_html_ab6865d3c7d84770bad681ef19c6c7d92"><div class="ttname"><a href="de/d03/structLogging_1_1Logger.html#ab6865d3c7d84770bad681ef19c6c7d92">Logging::Logger::AddSink</a></div><div class="ttdeci">static std::size_t AddSink(LoggerSink *_loggerSink)</div><div class="ttdoc">Adds a sink to loggerSinks.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:22</div></div>
+</div><!-- fragment --></li>
+</ol>
+<dl class="section note"><dt>Note</dt><dd>Users can also write <code>Prefix</code> and <code>Suffix</code> functions in the same way in their <code>CustomLoggerSink</code> if they want to add custom prefixes or suffixes to their log messages. See for instance how those were implemented in <a class="el" href="d7/d02/classLogging_1_1TestLoggerSink.html">TestLoggerSink</a>.</dd></dl>
+<p>For more examples, see the existing sink implementations <code><a class="el" href="d2/d05/ExeConsoleLoggerSink_8cpp.html">src/Logging/ExeConsoleLoggerSink.cpp</a></code> or <code><a class="el" href="dc/d04/TestLoggerSink_8cpp.html">src/Tests/TestLoggerSink.cpp</a></code> and how it is used in <code><a class="el" href="df/d02/main_8cpp.html">src/Tests/main.cpp</a></code>. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
