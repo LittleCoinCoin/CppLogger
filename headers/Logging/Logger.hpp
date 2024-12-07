@@ -23,25 +23,25 @@ namespace Logging
 @brief The macro to log a message with the level Debug.
 @details It accepts variadic arguments to replace the formating anchors in the message.
 */
-#define LOG_DEBUG(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Debug, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_DEBUG(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Debug, Logging::Logger::GetFormattedTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
 
 /*!
 @brief The macro to log a message with the level Trace.
 @details It accepts variadic arguments to replace the formating anchors in the message.
 */
-#define LOG_TRACE(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Trace, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_TRACE(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Trace, Logging::Logger::GetFormattedTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
 
 /*!
 @brief The macro to log a message with the level Warning.
 @details It accepts variadic arguments to replace the formating anchors in the message.
 */
-#define LOG_WARNING(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Warning, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_WARNING(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Warning, Logging::Logger::GetFormattedTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
 
 /*!
 @brief The macro to log a message with the level Error.
 @details It accepts variadic arguments to replace the formating anchors in the message.
 */
-#define LOG_ERROR(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Error, Logging::Logger::GetCurrentTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_ERROR(fmt, ...) Logging::Logger::Log(Logging::LogLevel_Error, Logging::Logger::GetFormattedTime(), __FILE__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)
 
 	/*!
 	@brief Static struct to handle logging to different sinks.
@@ -79,7 +79,7 @@ namespace Logging
 		@return The current time.
 		@todo Make this thread safe.
 		*/
-		static const char* GetCurrentTime();
+		static const char* GetFormattedTime();
 
 		/*!
 		@brief Sets the value of ::logLevelFlag to that of @p _logLvlFlag.

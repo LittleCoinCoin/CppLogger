@@ -6,7 +6,7 @@ char Logging::Logger::msgBuffer[Logging::Logger::maxMsgBufferSize] = { 0 };
 
 std::vector<Logging::LoggerSink*> Logging::Logger::loggerSinks = std::vector<LoggerSink*>();
 
-const char* Logging::Logger::GetCurrentTime()
+const char* Logging::Logger::GetFormattedTime()
 {
 	static char buf[100];
 	std::time_t now = std::time(nullptr);
