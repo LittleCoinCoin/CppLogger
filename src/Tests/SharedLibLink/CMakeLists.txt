@@ -1,9 +1,11 @@
 # ~/src/Tests/SharedLibLink/CMakeLists.txt
 
+msg("Configure Test: SharedLibLink")
+
 add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 
 # Building the lib first
-set(TargetLibName LoggingLibTest)
+set(TargetLibName ${LOGGING_LIB_NAME}_LibTest)
 add_library(${TargetLibName} SHARED
 
 "../../Logging/ExeConsoleLoggerSink.cpp" #Included to test the build but not used in the test
