@@ -39,7 +39,7 @@ namespace Logging
 		logFunc_pf loggingFunctions[LogLevel_Count] = { nullptr };
 
 		/*!
-		@brief A custom type for the function pointer to log the prefix of a message.
+		@brief A custom type for the function pointer to log the prefix or suffix of a message.
 		*/
 		typedef void (LoggerSink::* afix_pf)( const char* /*_time*/,
 			const char* /*_file*/, const char* /*_function*/, int /*_line*/) const noexcept;
