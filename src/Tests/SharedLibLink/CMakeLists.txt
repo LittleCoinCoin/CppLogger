@@ -1,5 +1,7 @@
 # ~/src/Tests/SharedLibLink/CMakeLists.txt
 
+msg("Configure Test: SharedLibLink")
+
 add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 
 # Building the lib first

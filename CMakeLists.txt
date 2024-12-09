@@ -3,6 +3,12 @@ cmake_minimum_required (VERSION 3.20)
 
 project ("CppLogger")
 
+# -- Cmake utility
+set(CMAKE_CPPPROFILER_MSG_PREFIX "[CppLogger] ")
+function(msg _msg)
+	message("${CMAKE_CPPPROFILER_MSG_PREFIX}${_msg}")
+endfunction()
+
 # Project options
 ## About the library
 option(BUILD_LOGGING_LIBRARY "Build the library for the logger" ON)
@@ -18,7 +24,11 @@ if (BUILD_LOGGING_LIBRARY)
 endif()
 
 if (BUILD_LOGGING_TESTS)
+	msg("Building the tests")
 	if (RUNTIME_LOGGING_TESTS)
+		msg("Adding runtime tests.
+		Don't forget to launch them after building using `ctest` command.
+		As this is using a multi-config generator, specifying the config with `-C <CONFIG>` is mandatory.")
 		enable_testing()
 	endif()
 	add_subdirectory ("src/Tests/DirectBuild")
