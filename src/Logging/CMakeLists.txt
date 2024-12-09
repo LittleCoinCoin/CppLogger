@@ -2,7 +2,7 @@
 
 add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 
-set(TargetName LoggingLib)
+set(TargetName ${LOGGING_LIB_NAME})
 
 add_library(${TargetName} SHARED
 

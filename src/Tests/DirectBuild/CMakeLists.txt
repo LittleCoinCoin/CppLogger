@@ -2,7 +2,7 @@
 
 add_compile_definitions(CRT_SECURE_NO_WARNINGS)
 
-set(TargetName LoggerDirectBuildTest)
+set(TargetName ${LOGGING_LIB_NAME}_DirectBuildTest)
 add_executable (${TargetName}
 
 "../main.cpp"
